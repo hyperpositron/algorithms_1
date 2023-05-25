@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class StringListImpl implements StringList {
 
     private final String[] storage;
@@ -58,27 +60,27 @@ public class StringListImpl implements StringList {
 
     @Override
     public boolean equals(StringList otherList) {
-        return false;
+        return Arrays.equals(this.toArray(),otherList.toArray());
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public void clear() {
-
+        size = 0;
     }
 
     @Override
     public String[] toArray() {
-        return new String[0];
+        return Arrays.copyOf(storage, size);
     }
 
     private void validateItem(String item) {
